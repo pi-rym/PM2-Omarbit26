@@ -29,20 +29,42 @@ class Repository{
 
 const cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {
 
-    const card = document.createElement('div');
+    const card = document.createElement("article");
+    const cardDescription = document.createElement('div');
+    const cardImage = document.createElement('img');
+    const cardRating = document.createElement("div");
 
-    card.innerHTML=`<h3>${title}</h3>
-        <img src=${poster} alt=${poster}>
+    card.classList.add("cards")
+    cardDescription.classList.add("description-card")
+    cardRating.classList.add("rating-card")
+    cardImage.classList.add("img-card")
+
+    cardDescription.innerHTML=`<h3>${title}</h3>
         <p>Genre: ${genre}</p>
         <p>Duration: ${duration}</p>`
 
-    card.addEventListener('mouseover',function(){
-        card.children[1].style.opacity=0.5;
+    cardRating.innerHTML =`<h3>${year}</h3>
+        <p>Directed by: ${director}</p>
+        <p>Rating: ${rate}</p>`
+    
+    cardImage.src=poster;
+    cardImage.alt=title;
+
+    card.appendChild(cardDescription);
+    card.appendChild(cardImage);
+    card.appendChild(cardRating);
+
+    card.addEventListener("mouseover", function(){
+        cardRating.style.display = "flex";
+        cardRating.style.flexDirection = "column";
+        cardRating.style.justifyContent = "center";
     })
 
-    card.addEventListener('mouseout',function(){
-        card.children[1].style.opacity=1;
+    card.addEventListener("mouseleave", function(){
+        cardRating.style.display = "none";
     })
+
+    console.log(card);
 
     return card;
 }
@@ -58,6 +80,11 @@ const addCardshtml = () => {
 
 const repository = new Repository();
 
-tempData.forEach(m=>repository.createMovie(m.title,m.year,m.director,m.duration,m.genre,m.rate,m.poster));
+const showData = (data)=>{
+    console.log(data)
+    data.forEach(m=>repository.createMovie(m.title,m.year,m.director,m.duration,m.genre,m.rate,m.poster))
+    addCardshtml();
+}
 
-addCardshtml();
+
+$.get('https://students-api.2.us-1.fl0.io/movies',showData)

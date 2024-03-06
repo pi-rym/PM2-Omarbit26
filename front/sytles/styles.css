@@ -33,13 +33,22 @@ h2{
     margin-bottom: 1rem;
     margin-top: 2em;
     font-weight: bold;
-    color: white;
 }
 
 
 footer{
     display: flex;
     justify-content: space-around;
+    margin-top: 3em;
+}
+
+footer img, footer p, #redes{
+    margin: auto 2em;
+}
+
+footer p{
+    font-size: 100%;
+    text-align: center;
 }
 
 .movieLogo{
@@ -93,14 +102,7 @@ footer{
     height: auto;
 }
 
-footer img, footer p, #redes{
-    margin: auto 2em;
-}
 
-footer p{
-    font-size: 150%;
-    text-align: center;
-}
 
 .logo_redes{
     width: 50px;
@@ -112,26 +114,51 @@ footer p{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    margin-top: 3em;
+    margin-right: 2em;
+    margin-left: 2em;
+
 }
 
-#container-card-movies div{
-    text-align: center;
-    margin: 4em;
+.cards{
+    width: 25em;
+    height: 40em;
+    border: 2px solid white;
+    position: relative;
 }
 
-#container-card-movies div img{
-    width: 400px;
+.img-card{
+    width: 320px;
     height: 500px;
-    margin-top: 1.5em;
-    margin-bottom: 1em;
+    display: block;
+    margin: auto;
 }
 
-#container-card-movies p {
-    font-size: larger;
+.description-card{
+    text-align: center;
+    margin: 1em;
+}
+
+.rating-card{
+  position: absolute; /* Se posiciona de manera absoluta dentro del contenedor */
+  top: 0;/* Se coloca en la parte superior del contenedor */
+  left: 0; /* Se coloca en la parte izquierda del contenedor */
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  background-color:rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  color: white; /* Color del texto */
+  text-align: center; /* Centra el texto horizontalmente */
+  display: none; /* Inicialmente oculto */
+}
+
+.description-card h3,.rating-card h3{
+        font-size: 150%;
+        font-weight: bold;
+    
+}
+
+.description-card h3, .rating-card h3,
+.description-card p, .rating-card p {
     margin: 0.5rem;
 }
 
-#container-card-movies h3 {
-    font-size:150%;
-    text-align: center;
-}
