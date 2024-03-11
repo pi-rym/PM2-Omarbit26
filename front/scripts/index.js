@@ -39,13 +39,13 @@ const cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {
     cardRating.classList.add("rating-card")
     cardImage.classList.add("img-card")
 
-    cardDescription.innerHTML=`<h3>${title}</h3>
-        <p>Genre: ${genre}</p>
-        <p>Duration: ${duration}</p>`
+    cardDescription.innerHTML=`<h3>${title}</h3>`
 
     cardRating.innerHTML =`<h3>${year}</h3>
         <p>Directed by: ${director}</p>
-        <p>Rating: ${rate}</p>`
+        <p>Rating: ${rate}</p>
+        <p>Genre: ${genre}</p>
+        <p>Duration: ${duration}</p>`
     
     cardImage.src=poster;
     cardImage.alt=title;

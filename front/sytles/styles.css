@@ -1,14 +1,12 @@
 body{
-    /*background-color: #121111;*/
-    background: linear-gradient(to bottom, #212020, #8f5e5e);
-    /* No se repite */
+
+    /*background: linear-gradient(to bottom, #242424, #6c6b6b);
+
     background-repeat: no-repeat;
-    /* Fondo cubre todo el cuerpo */
     background-size: cover;
-    /* Fondo se mantiene fijo */
-    background-attachment: fixed;
-    /* Centra el contenido */
-    height: 100%; /* Establece el alto del cuerpo al 100% del viewport */
+    background-attachment: fixed;*/
+    background-color: #6c6b6b;
+    height: 100%; 
     color: white;
     font-family: system-ui;
 }
@@ -16,20 +14,30 @@ body{
 header{
 display: flex;
 justify-content:center;
-margin-bottom: 2em;
-margin-top: 2em;
+
 }
 
-h1{
-    text-align: center;
-    font-size: 500%;
-    font-weight: 600;
-    margin: auto 0.5rem;
+#title_div{
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente los elementos al centro */
+    align-items: center;
+    flex-direction: column;
+    margin: 0 4em;
+}
+
+
+#logo_title{
+    display: block;
+
+}
+
+#title{
+    color: white;
 }
 
 h2{
     text-align: center;
-    font-size: 200%;
+    font-size: 100%;
     margin-bottom: 1rem;
     margin-top: 2em;
     font-weight: bold;
@@ -39,7 +47,8 @@ h2{
 footer{
     display: flex;
     justify-content: space-around;
-    margin-top: 3em;
+    margin: 0 3em;
+
 }
 
 footer img, footer p, #redes{
@@ -60,11 +69,13 @@ footer p{
 
 #link-pages{
     margin: 3em auto;
+    display: block;
+    width: 100%;
 }
 
 #links li{
     margin: 1em 3em;
-    font-size: 150%;
+    font-size: 200%;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -75,7 +86,7 @@ footer p{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
+    margin: auto;
     
 }
 
@@ -86,19 +97,20 @@ footer p{
 }
 
 #links a:hover{
-    font-size: 120%;
-    color: rgb(249, 83, 83);
-    transition: font-size 0.5s ease;
+    transform: scale(1.2);
+    transition: transform 0.5s ease;
 }
 
 #links a:not(:hover) {
-    transition: font-size 0.5s ease; 
+    transition: transform 0.5s ease; 
 }
 
 
 
 #background img{
+
     width: 100%;
+    object-fit: cover;
     height: auto;
 }
 
@@ -112,7 +124,7 @@ footer p{
 
 #container-card-movies{
     display: flex;
-    justify-content: space-between;
+    justify-content:space-evenly;
     flex-direction: row;
     margin-top: 3em;
     margin-right: 2em;
@@ -122,14 +134,14 @@ footer p{
 
 .cards{
     width: 25em;
-    height: 40em;
-    border: 2px solid white;
+    height: auto;
+    padding-bottom: 1rem;
+    /*border: 2px solid white;*/
     position: relative;
 }
 
 .img-card{
-    width: 320px;
-    height: 500px;
+
     display: block;
     margin: auto;
 }
@@ -145,7 +157,7 @@ footer p{
   left: 0; /* Se coloca en la parte izquierda del contenedor */
   width: 100%; /* Ocupa todo el ancho del contenedor */
   height: 100%; /* Ocupa toda la altura del contenedor */
-  background-color:rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  background-color:rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
   color: white; /* Color del texto */
   text-align: center; /* Centra el texto horizontalmente */
   display: none; /* Inicialmente oculto */
