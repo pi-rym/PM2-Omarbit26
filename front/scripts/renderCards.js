@@ -1,36 +1,9 @@
 
-/*class Movie{
-    constructor(title,year,director,duration,genre,rate,poster){
-        this.title = title;
-        this.year = year;
-        this.director = director;
-        this.duration = duration;
-        this.genre = genre;
-        this.rate = rate;
-        this.poster = poster;
-    }
-}*/
+const {Movie} = require("./Movie")
 
-/*
-class Repository{
-    constructor(){
-        this.movies = [];
-    }
 
-    createMovie(title,year,director,duration,genre,rate,poster){
-        const myMovie = new Movie(title,year,director,duration,genre,rate,poster);
-        this.movies.push(myMovie);
-    }
 
-    getallMovies(){
-        return this.movies;
-    }
-}
-*/
-
-/*
 const cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {
-
     const card = document.createElement("article");
     const cardDescription = document.createElement('div');
     const cardImage = document.createElement('img');
@@ -72,28 +45,12 @@ const cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {
 }
 
 
-const addCardshtml = () => {
+const addCardshtml = function(repository) {
     const containerMovies = document.getElementById("container-card-movies");
     containerMovies.innerHTML="";
     const movies = repository.getallMovies();
     const allmoviescards = movies.map(card=>cardToHtml(card));
     allmoviescards.forEach(cardhtml=>{containerMovies.appendChild(cardhtml)});
 }
-*/
 
-const {Repository} = require("./Repository")
-const {addCardshtml} = require("./renderCards")
-const {Movie} = require("./Movie")
-
-const repository =  new Repository();
-
-const showData = (data)=>{
-    console.log(data)
-    data.forEach(m=>repository.createMovie(m))
-    console.log(repository);
-    addCardshtml(repository);
-}
-
-
-$.get('https://students-api.2.us-1.fl0.io/movies',showData)
-
+module.exports = {addCardshtml};
