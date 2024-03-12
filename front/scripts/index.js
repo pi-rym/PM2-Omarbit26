@@ -12,5 +12,5 @@ const showData = (data)=>{
 }
 
 
-$.get('https://students-api.2.us-1.fl0.io/movies',showData)
+$.get('https://students-api.up.railway.app/movies',showData)
 

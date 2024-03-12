@@ -35,7 +35,7 @@ eval("const {Movie} = __webpack_require__(/*! ./Movie */ \"./scripts/Movie.js\")
   \**************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const {Repository} = __webpack_require__(/*! ./Repository */ \"./scripts/Repository.js\")\nconst {addCardshtml} = __webpack_require__(/*! ./renderCards */ \"./scripts/renderCards.js\")\nconst {Movie} = __webpack_require__(/*! ./Movie */ \"./scripts/Movie.js\")\n\nconst repository =  new Repository();\n\nconst showData = (data)=>{\n    console.log(data)\n    data.forEach(m=>repository.createMovie(m))\n    console.log(repository);\n    addCardshtml(repository);\n}\n\n\n$.get('https://students-api.2.us-1.fl0.io/movies',showData)\n\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
+eval("const {Repository} = __webpack_require__(/*! ./Repository */ \"./scripts/Repository.js\")\nconst {addCardshtml} = __webpack_require__(/*! ./renderCards */ \"./scripts/renderCards.js\")\nconst {Movie} = __webpack_require__(/*! ./Movie */ \"./scripts/Movie.js\")\n\nconst repository =  new Repository();\n\nconst showData = (data)=>{\n    console.log(data)\n    data.forEach(m=>repository.createMovie(m))\n    console.log(repository);\n    addCardshtml(repository);\n}\n\n\n$.get('https://students-api.up.railway.app/movies',showData)\n\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
 
 /***/ }),
 
