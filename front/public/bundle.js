@@ -29,23 +29,33 @@ eval("const {Movie} = __webpack_require__(/*! ./Movie */ \"./scripts/Movie.js\")
 
 /***/ }),
 
+/***/ "./scripts/handler.js":
+/*!****************************!*\
+  !*** ./scripts/handler.js ***!
+  \****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\")\n\n\nconst getFilms = async (repository)=>{\n\n    try{\n        const promisePeliculas = await axios.get('http://localhost:3000/movies');\n        const data_movie  = promisePeliculas.data;\n        data_movie.forEach(m=>repository.createMovie(m));\n    }\n    catch(error){\n        throw Error(error);\n    }\n}\n\nmodule.exports = {\n    getFilms\n}\n\n\n\n\n\n\n//# sourceURL=webpack://front/./scripts/handler.js?");
+
+/***/ }),
+
 /***/ "./scripts/index.js":
 /*!**************************!*\
   !*** ./scripts/index.js ***!
   \**************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const {Repository} = __webpack_require__(/*! ./Repository */ \"./scripts/Repository.js\")\nconst {addCardshtml} = __webpack_require__(/*! ./renderCards */ \"./scripts/renderCards.js\")\nconst {Movie} = __webpack_require__(/*! ./Movie */ \"./scripts/Movie.js\")\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\")\n\nconst repository =  new Repository();\n\n/*\nconst renderMovies = async () =>{\n    try{\n        const promisePeliculas = await axios.get('https://students-api.up.railway.app/movies');\n        const data_movie = promisePeliculas.data\n        data_movie.forEach(m=>repository.createMovie(m));\n        addCardshtml(repository);\n        \n    }\n    catch(error){\n        console.log(\"no se puedo encontrar la informacion de peliculas. Refresque la página.\")\n    }\n}\nrenderMovies();*/\n\nconst promiseMovie = axios.get('https://students-api.up.railway.app/movies');\n\npromiseMovie.then((response)=>{const data_movie = response.data;\n    data_movie.forEach(m=>repository.createMovie(m));\n    addCardshtml(repository);\n})\n.catch((error) => { alert(\"fail movies\");console.log(error)});\n\n\n\n\n\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
+eval("const { renderFilms } = __webpack_require__(/*! ./render */ \"./scripts/render.js\");\nconst {Repository} = __webpack_require__(/*! ./Repository */ \"./scripts/Repository.js\");\nconst {getFilms} = __webpack_require__(/*! ./handler */ \"./scripts/handler.js\");\n\n\nconst myRepository = new Repository();\n\ngetFilms(myRepository)\n.then(()=>{renderFilms(myRepository)})\n.catch((error) => { alert(\"fail movies\");console.log(error)})\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
 
 /***/ }),
 
-/***/ "./scripts/renderCards.js":
-/*!********************************!*\
-  !*** ./scripts/renderCards.js ***!
-  \********************************/
+/***/ "./scripts/render.js":
+/*!***************************!*\
+  !*** ./scripts/render.js ***!
+  \***************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\nconst {Movie} = __webpack_require__(/*! ./Movie */ \"./scripts/Movie.js\")\n\n\n\nconst cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {\n    const card = document.createElement(\"article\");\n    const cardDescription = document.createElement('div');\n    const cardImage = document.createElement('img');\n    const cardRating = document.createElement(\"div\");\n\n    card.classList.add(\"cards\")\n    cardDescription.classList.add(\"description-card\")\n    cardRating.classList.add(\"rating-card\")\n    cardImage.classList.add(\"img-card\")\n\n    cardDescription.innerHTML=`<h3>${title}</h3>`\n\n    cardRating.innerHTML =`<h3>${year}</h3>\n        <p>Directed by: ${director}</p>\n        <p>Rating: ${rate}</p>\n        <p>Genre: ${genre}</p>\n        <p>Duration: ${duration}</p>`\n    \n    cardImage.src=poster;\n    cardImage.alt=title;\n\n    card.appendChild(cardDescription);\n    card.appendChild(cardImage);\n    card.appendChild(cardRating);\n\n    card.addEventListener(\"mouseover\", function(){\n        cardRating.style.display = \"flex\";\n        cardRating.style.flexDirection = \"column\";\n        cardRating.style.justifyContent = \"center\";\n    })\n\n    card.addEventListener(\"mouseleave\", function(){\n        cardRating.style.display = \"none\";\n    })\n\n    console.log(card);\n\n    return card;\n}\n\n\nconst addCardshtml = function(repository) {\n    const containerMovies = document.getElementById(\"container-card-movies\");\n    containerMovies.innerHTML=\"\";\n    const movies = repository.getallMovies();\n    const allmoviescards = movies.map(card=>cardToHtml(card));\n    allmoviescards.forEach(cardhtml=>{containerMovies.appendChild(cardhtml)});\n}\n\nmodule.exports = {addCardshtml};\n\n//# sourceURL=webpack://front/./scripts/renderCards.js?");
+eval("\nconst {Movie} = __webpack_require__(/*! ./Movie */ \"./scripts/Movie.js\")\n\nconst cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {\n    const card = document.createElement(\"article\");\n    const cardDescription = document.createElement('div');\n    const cardImage = document.createElement('img');\n    const cardRating = document.createElement(\"div\");\n\n    card.classList.add(\"cards\")\n    cardDescription.classList.add(\"description-card\")\n    cardRating.classList.add(\"rating-card\")\n    cardImage.classList.add(\"img-card\")\n\n    cardDescription.innerHTML=`<h3>${title}</h3>`\n\n    cardRating.innerHTML =`<h3>${year}</h3>\n        <p>Directed by: ${director}</p>\n        <p>Rating: ${rate}</p>\n        <p>Genre: ${genre}</p>\n        <p>Duration: ${duration}</p>`\n    \n    cardImage.src=poster;\n    cardImage.alt=title;\n\n    card.appendChild(cardDescription);\n    card.appendChild(cardImage);\n    card.appendChild(cardRating);\n\n    card.addEventListener(\"mouseover\", function(){\n        cardRating.style.display = \"flex\";\n        cardRating.style.flexDirection = \"column\";\n        cardRating.style.justifyContent = \"center\";\n    })\n\n    card.addEventListener(\"mouseleave\", function(){\n        cardRating.style.display = \"none\";\n    })\n\n    return card;\n}\n\n\nconst renderFilms = function(repository) {\n    const containerMovies = document.getElementById(\"container-card-movies\");\n    containerMovies.innerHTML=\"\";\n    const movies = repository.getallMovies();\n    const allmoviescards = movies.map(card=>cardToHtml(card));\n    allmoviescards.forEach(cardhtml=>{containerMovies.appendChild(cardhtml)});\n}\n\nmodule.exports = {renderFilms};\n\n//# sourceURL=webpack://front/./scripts/render.js?");
 
 /***/ }),
 

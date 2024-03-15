@@ -1,8 +1,6 @@
 
 const {Movie} = require("./Movie")
 
-
-
 const cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {
     const card = document.createElement("article");
     const cardDescription = document.createElement('div');
@@ -39,13 +37,11 @@ const cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {
         cardRating.style.display = "none";
     })
 
-    console.log(card);
-
     return card;
 }
 
 
-const addCardshtml = function(repository) {
+const renderFilms = function(repository) {
     const containerMovies = document.getElementById("container-card-movies");
     containerMovies.innerHTML="";
     const movies = repository.getallMovies();
@@ -53,4 +49,4 @@ const addCardshtml = function(repository) {
     allmoviescards.forEach(cardhtml=>{containerMovies.appendChild(cardhtml)});
 }
 
-module.exports = {addCardshtml};
+module.exports = {renderFilms};
