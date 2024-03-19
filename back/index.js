@@ -1,8 +1,7 @@
-require('dotenv').config()
 const {app} = require("./src/server");
 const dbConnection = require("./src/config/dbConnection")
 
-const PORT = 3000;
+const PORT =  3000
 
 
 dbConnection().then(()=>{

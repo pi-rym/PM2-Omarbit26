@@ -40,16 +40,5 @@ const movieService = require("../services/movieService")
                     error:"Error interno del servidor"
                 })
             }
-        },
-
-        getMovieByTitle: async(req,res) =>{
-            try{
-                const {title} = req.body;
-                const movie = await movieService.getMovieByTitle(title);
-                res.status(200).json(movie);
-            }
-            catch(error){
-                console.log(error)
-            }
         }
     }
