@@ -10,30 +10,77 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
-    <header class="bg-dark border-bottom border-body py-3">
-      <div id="title_div">
-        <img src="./assets/images/logo_movie-removebg-preview.png" id="logo_title"  class="movieLogo">
-        <h1 id="title" class="h1">CineSpotifyFree</h1>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body py-3 " data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-5" href="../index.html">
+            <div class="container d-flex"></div>
+            <img src="../assets/images/logo_movie-removebg-preview.png" al="imagen" style="height: 50px;width: 60px;">
+            CineSpotifyFree
+          </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./contacto.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/contacto.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/form.html">Form</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <nav id="link-pages">
-        <ul id="links" class="justify-content-center">
-          <li><a  href="./pages/about.html">About</a></li>
-          <li><a  href="./pages/blog.html">Blog</a></li>
-          <li><a  href="./pages/contacto.html">Contacto</a></li>
-          <li><a  href="./pages/form.html">Form</a></li>
-        </ul>
-      </nav>
-    </header>
+    </nav>
+  </header>
     <main>
         
-        <section id= "background">
-          <img src="./assets/images/logo_fondo.jpeg ">
-        </section>
+      <section class="container-fluid">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./assets/images/fondo1_1.jpg " class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./assets/images/fondo2_2.jpg " class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./assets/images/fondo3_3.jpg" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
 
-      <section id="container-card-movies">
-        <h2> Lastest Movies</h2>
         
-        <!--Here it's going to be add the movie cards -->
+
+
+      <section class="container">
+
+        <h2> Lastest Movies on release</h2>
+
+        <div class="row" id="container-card-movies">
+          <!--Here it's going to be add the movie cards -->
+        </div>
+        
+        
         
       </section>
 
@@ -55,7 +102,7 @@
         
       </div>
     </footer>
-    <script src="./public/bundle.js"></script>
+    <script src="./public/home.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

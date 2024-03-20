@@ -1,21 +1,12 @@
 body{
 
-    /*background: linear-gradient(to bottom, #242424, #6c6b6b);
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;*/
     background-color: #6c6b6b;
     height: 100%; 
     color: white;
     font-family: system-ui;
 }
 
-header{
-display: flex;
-justify-content:center;
 
-}
 
 #title_div{
     display: flex;
@@ -37,10 +28,9 @@ justify-content:center;
 
 h2{
     text-align: center;
-    font-size: 100%;
+    font-size: 150%;
     margin-bottom: 1rem;
     margin-top: 2em;
-    font-weight: bold;
 }
 
 
@@ -105,17 +95,6 @@ footer p{
     transition: transform 0.5s ease; 
 }
 
-
-
-#background img{
-
-    width: 100%;
-    object-fit: cover;
-    height: auto;
-}
-
-
-
 .logo_redes{
     width: 50px;
     height: 50px;
@@ -141,7 +120,7 @@ footer p{
 }
 
 .img-card{
-
+    height: 500px;
     display: block;
     margin: auto;
 }
@@ -163,10 +142,14 @@ footer p{
   display: none; /* Inicialmente oculto */
 }
 
-.description-card h3,.rating-card h3{
-        font-size: 150%;
+.description-card h3{
+    font-size: 100%;
+    font-weight: normal;
+}
+
+.rating-card h3{
+        font-size: 100%;
         font-weight: bold;
-    
 }
 
 .description-card h3, .rating-card h3,

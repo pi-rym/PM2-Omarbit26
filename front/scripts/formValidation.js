@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", ()=>{
+const axios = require('axios')
+
+
     
     const form = document.getElementById("formMovies")
     const containerInputs= document.querySelectorAll(".forValidate");
@@ -96,8 +98,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
         event.preventDefault();
         if(!form.checkValidity()||!validateCheckBoxes())
         { 
-            console.log("Complete todos los campos el formulario")
-            return
+            
+            return alert("Es obligatorio que todos los campos esten validados")
         }
 
         alert("Se estan enviando datos al servidor")
@@ -130,5 +132,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     form.addEventListener("submit",submitForm);
     form.addEventListener("reset",resetForm);
-})
+
 

@@ -11,6 +11,7 @@ const cardToHtml = ({title,year,director,duration,genre,rate,poster}) => {
     cardDescription.classList.add("description-card")
     cardRating.classList.add("rating-card")
     cardImage.classList.add("img-card")
+    cardImage.classList.add("img-fluid")
 
     cardDescription.innerHTML=`<h3>${title}</h3>`
 
