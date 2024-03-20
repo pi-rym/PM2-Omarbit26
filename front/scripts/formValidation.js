@@ -1,7 +1,23 @@
 document.addEventListener("DOMContentLoaded", ()=>{
+    
     const form = document.getElementById("formMovies")
     const containerInputs= document.querySelectorAll(".forValidate");
-    const containerCheck= document.getElementById("forValidateCheck")
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+
+
+    const validateCheckBoxes = () => {
+        const checkboxess = document.querySelectorAll('input[type="checkbox"]');
+        let marcado = false
+        checkboxess.forEach(checkbox=>{
+            if(checkbox.checked){
+                marcado=true;
+            }
+        })
+        if(!marcado){
+            return false;
+        }
+        return true;
+    }
 
      /**validacion en tiempo real */
     containerInputs.forEach((containerInput)=>{
@@ -24,23 +40,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })  
     })
 
-    const validateCheckBoxes = () => {
-        const checkboxess = document.querySelectorAll('input[type="checkbox"]');
-        let marcado = false
-        checkboxess.forEach(checkbox=>{
-            if(checkbox.checked){
-                marcado=true;
-            }
-        })
-        if(!marcado){
-            return false;
-        }
-        return true;
-    }
-
-
-
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]')
     checkboxes.forEach(checkbox=>{
         checkbox.addEventListener('change', ()=>{
             if(validateCheckBoxes()){
@@ -53,7 +52,26 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
     })
 
+    
+    const sendPost = (data)=>{
+        const config = {
+            method: 'post',
+            url: 'http://localhost:3000/movies',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: data
+          }
 
+          axios(config)
+            .then(function (response) {
+                console.log(response)
+                alert("Se creo movie en base de datos")
+            })
+             .catch(function (error) {
+                alert('Error al realizar la solicitud:', error);
+            });
+    }
 
 
 
@@ -73,15 +91,40 @@ document.addEventListener("DOMContentLoaded", ()=>{
             document.getElementById("check-feedback").textContent=""
         })
         }
+
     const submitForm = (event)=>{
         event.preventDefault();
-        if(!validateCheckBoxes())
+        if(!form.checkValidity()||!validateCheckBoxes())
         { 
             console.log("Complete todos los campos el formulario")
             return
         }
-        //!form.checkValidity()||
+
         alert("Se estan enviando datos al servidor")
+        const title=document.getElementById("inputTitle").value 
+        const year=document.getElementById("inputYear").value
+        const director=document.getElementById("inputDirector").value
+        const duration=document.getElementById("inputDuration").value
+        const rate=document.getElementById("inputRate").value
+        const poster=document.getElementById("inputPoster").value
+        const genre = []
+        checkboxes.forEach((checkbox)=>{
+            if(checkbox.checked){
+                genre.push(checkbox.value)
+            }
+        })
+    
+        const data = {
+            title,
+            year,
+            director,
+            duration,
+            genre,
+            rate,
+            poster
+        }
+        console.log(data)
+        sendPost(data);
         resetForm();
     }
 
