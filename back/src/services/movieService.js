@@ -8,16 +8,16 @@ module.exports = {
             
         }
         catch(error){
-            console.log(error.message)
+            throw Error(error.message)  
         }
     },
     createMovie: async (movie) => {
         try{
-            const newUser = await Movie.create(movie)
-            return newUser
+            const newMovie = await Movie.create(movie)
+            return newMovie
         }
         catch(error){
-            console.log(error.message)            
+            throw Error(error.message)             
         }
     },
 
@@ -27,7 +27,7 @@ module.exports = {
             return movie;
         }
         catch(error){
-            console.log(error.message)     
+            throw Error(error.message)       
         }
     },
 
@@ -37,7 +37,7 @@ module.exports = {
             return movie
         }
         catch(error){
-            console.log(error.message) 
+            throw Error(error.message)   
         }
     }
 

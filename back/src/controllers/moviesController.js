@@ -17,14 +17,14 @@ const movieService = require("../services/movieService")
         },
         createMovie : async (req,res)=>{
 
-            const {title,year,director} = req.body;
+            const {title,year,director,duration,genre,rate,poster} = req.body;
             try{
-                const newUser = await movieService.createMovie({title,year,director});
+                const newUser = await movieService.createMovie({title,year,director,duration,genre,rate,poster});
                 res.status(201).json(newUser)
             }
             catch(error){
                 res.status(500).json({
-                    error:"Error interno del servidor"
+                    error:`error: ${error}`
                 })
             }
         },
