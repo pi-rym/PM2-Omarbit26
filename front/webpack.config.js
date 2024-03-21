@@ -1,7 +1,7 @@
 module.exports =  { 
     mode: "development",
     entry: {home:"./scripts/index.js", 
-            form:"./scripts/formValidation.js"
+            form:"./scripts/form.js"
     },
     output: {
         path:__dirname+"/public",
@@ -10,13 +10,3 @@ module.exports =  {
 };
 
 
-
-/*
-module.exports =  { 
-    mode: "development",
-    entry: "./scripts/index.js",
-    output: {
-        path:__dirname+"/public",
-        filename: "bundle.js",
-    },
-};*/

@@ -1,33 +1,16 @@
-const axios = require('axios')
+    const sendPost = require('./handlerpost');
 
-
-    
     const form = document.getElementById("formMovies")
     const containerInputs= document.querySelectorAll(".forValidate");
     const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 
-
-    const validateCheckBoxes = () => {
-        const checkboxess = document.querySelectorAll('input[type="checkbox"]');
-        let marcado = false
-        checkboxess.forEach(checkbox=>{
-            if(checkbox.checked){
-                marcado=true;
-            }
-        })
-        if(!marcado){
-            return false;
-        }
-        return true;
-    }
-
-     /**validacion en tiempo real */
+    // validacion en línea
+    //inputs
     containerInputs.forEach((containerInput)=>{
         const input = containerInput.querySelector('input')
         const feedback = containerInput.querySelector('div')
         input.addEventListener("input",(event)=>{
             if(input.validity.valid ){
-                feedback.textContent="ok!"
                 feedback.classList.remove("invalid-feedback")
                 feedback.classList.add("valid-feedback")
                 input.classList.remove("is-invalid")
@@ -41,11 +24,10 @@ const axios = require('axios')
             }
         })  
     })
-
+    //check box
     checkboxes.forEach(checkbox=>{
         checkbox.addEventListener('change', ()=>{
             if(validateCheckBoxes()){
-                document.getElementById("check-feedback").textContent="ok!"
                 document.getElementById("check-feedback").style.color= "#28a745"
             }else{
                 document.getElementById("check-feedback").textContent="Select at least one genre"
@@ -54,30 +36,17 @@ const axios = require('axios')
         })
     })
 
-    
-    const sendPost = (data)=>{
-        const config = {
-            method: 'post',
-            url: 'http://localhost:3000/movies',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            data: data
-          }
-
-          axios(config)
-            .then(function (response) {
-                console.log(response)
-                alert("Se creo movie en base de datos")
-            })
-             .catch(function (error) {
-                alert('Error al realizar la solicitud:', error);
-            });
+    // validacion submit al menos un checkbox marcado
+    const validateCheckBoxes = () => {
+        const checkboxess = document.querySelectorAll('input[type="checkbox"]');
+        let marcado = false
+        checkboxess.forEach(checkbox=>{if(checkbox.checked){marcado=true}})
+        if(!marcado){return false;}
+        return true;
     }
 
-
-
-    const resetForm = (event) => {
+    // funciones eventos manejadores
+    const resetForm = () => {
         containerInputs.forEach((containerInput)=>{
             const input = containerInput.querySelector('input')
             const feedback = containerInput.querySelector('div')
@@ -92,13 +61,13 @@ const axios = require('axios')
             checkbox.checked=false;
             document.getElementById("check-feedback").textContent=""
         })
+            document.getElementById("checkboxAction").checked=true; 
         }
 
     const submitForm = (event)=>{
         event.preventDefault();
         if(!form.checkValidity()||!validateCheckBoxes())
         { 
-            
             return alert("Es obligatorio que todos los campos esten validados")
         }
 
@@ -110,27 +79,14 @@ const axios = require('axios')
         const rate=document.getElementById("inputRate").value
         const poster=document.getElementById("inputPoster").value
         const genre = []
-        checkboxes.forEach((checkbox)=>{
-            if(checkbox.checked){
-                genre.push(checkbox.value)
-            }
-        })
+        checkboxes.forEach((checkbox)=>{if(checkbox.checked){genre.push(checkbox.value)}})
     
-        const data = {
-            title,
-            year,
-            director,
-            duration,
-            genre,
-            rate,
-            poster
-        }
-        console.log(data)
+        const data = {title,year,director,duration,genre,rate,poster}
         sendPost(data);
         resetForm();
     }
 
     form.addEventListener("submit",submitForm);
-    form.addEventListener("reset",resetForm);
-
+    document.getElementById("btn_reset").addEventListener("click",resetForm);;
+   
 
