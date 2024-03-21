@@ -45,7 +45,7 @@ eval("const axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist
   \**************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { renderFilms } = __webpack_require__(/*! ./render */ \"./scripts/render.js\");\nconst {Repository} = __webpack_require__(/*! ./Repository */ \"./scripts/Repository.js\");\nconst {getFilms} = __webpack_require__(/*! ./handler */ \"./scripts/handler.js\");\n\n\nconst myRepository = new Repository();\n\ngetFilms(myRepository)\n.then(()=>{renderFilms(myRepository)})\n.catch((error) => { alert(\"fail movies\");console.log(error)})\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
+eval("const { renderFilms } = __webpack_require__(/*! ./render */ \"./scripts/render.js\");\nconst {Repository} = __webpack_require__(/*! ./Repository */ \"./scripts/Repository.js\");\nconst {getFilms} = __webpack_require__(/*! ./handler */ \"./scripts/handler.js\");\n\n\nconst myRepository = new Repository();\n\ngetFilms(myRepository)\n.then(()=>{renderFilms(myRepository)})\n.catch((error) => { alert(\"Error getting movies from server\");console.log(error)})\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
 
 /***/ }),
 

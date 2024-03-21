@@ -6,11 +6,13 @@
 
     // validacion en línea
     //inputs
+
     containerInputs.forEach((containerInput)=>{
         const input = containerInput.querySelector('input')
         const feedback = containerInput.querySelector('div')
         input.addEventListener("input",(event)=>{
             if(input.validity.valid ){
+                feedback.textContent=""
                 feedback.classList.remove("invalid-feedback")
                 feedback.classList.add("valid-feedback")
                 input.classList.remove("is-invalid")
@@ -27,7 +29,7 @@
     //check box
     checkboxes.forEach(checkbox=>{
         checkbox.addEventListener('change', ()=>{
-            if(validateCheckBoxes()){
+            if(validationCheckBoxes()){
                 document.getElementById("check-feedback").style.color= "#28a745"
             }else{
                 document.getElementById("check-feedback").textContent="Select at least one genre"
@@ -36,11 +38,25 @@
         })
     })
 
+    //validation submit
+
+    // validacion js elementos no vacios inputs
+    const validationInputs = ()=>{
+        let validation = true     
+        containerInputs.forEach((containerInput)=>{
+            const input = containerInput.querySelector('input')
+            if(!input.value.trim()){
+                validation = false
+            }
+
+        })
+        return validation
+    }
+
     // validacion submit al menos un checkbox marcado
-    const validateCheckBoxes = () => {
-        const checkboxess = document.querySelectorAll('input[type="checkbox"]');
+    const validationCheckBoxes = () => {
         let marcado = false
-        checkboxess.forEach(checkbox=>{if(checkbox.checked){marcado=true}})
+        checkboxes.forEach(checkbox=>{if(checkbox.checked){marcado=true}})
         if(!marcado){return false;}
         return true;
     }
@@ -66,7 +82,7 @@
 
     const submitForm = (event)=>{
         event.preventDefault();
-        if(!form.checkValidity()||!validateCheckBoxes())
+        if(!form.checkValidity()||!validationCheckBoxes()||!validationInputs())
         { 
             return alert("Es obligatorio que todos los campos esten validados")
         }
@@ -88,5 +104,5 @@
 
     form.addEventListener("submit",submitForm);
     document.getElementById("btn_reset").addEventListener("click",resetForm);;
-   
+
 

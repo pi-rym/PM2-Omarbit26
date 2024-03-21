@@ -6,7 +6,6 @@ const movieService = require("../services/movieService")
 
             try {
                 const data = await movieService.getMovies();
-                console.log(data);
                 res.status(200).json(data);
             } 
             catch(error){

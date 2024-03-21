@@ -7,7 +7,7 @@ const myRepository = new Repository();
 
 getFilms(myRepository)
 .then(()=>{renderFilms(myRepository)})
-.catch((error) => { alert("fail movies");console.log(error)})
+.catch((error) => { alert("Error getting movies from server");console.log(error)})
 
 
 
